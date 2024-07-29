@@ -83,3 +83,38 @@ input:hover {
   justify-content: center;
   gap: 10px;
 }
+
+.PDFControl__Btn {
+  cursor: pointer;
+}
+
+.PDFControl__principalBTn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.PDFControl__Upload {
+  background-color: white;
+  color: #5499c7;
+  border: 1px solid #5499c7;
+  border-radius: 8px;
+  padding: 0px 10px;
+}
+.PDFControl__Upload:hover {
+  background-color: #5499c7;
+  color: white;
+}
+
+.PDFControl__Exit {
+  background-color: white;
+  color: #283747;
+  border: 1px solid #283747;
+  border-radius: 8px;
+  padding: 0px 10px;
+}
+.PDFControl__Exit:hover {
+  background-color: #283747;
+  color: white;
+}

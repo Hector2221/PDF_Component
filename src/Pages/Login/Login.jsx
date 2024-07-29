@@ -1,7 +1,5 @@
 import { useState } from "react";
 import "./Login.css";
-import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -12,8 +10,12 @@ export const Login = () => {
 
   const eventSubmit = (e) => {
     e.preventDefault();
-    console.log("ffff");
+    //Funcion axios
+
+    //bstatus 1
     navigate("/PDFControl");
+
+    //bstatus 2 contrase;a y usuario incorrectos
   };
 
   return (

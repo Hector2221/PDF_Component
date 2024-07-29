@@ -14,7 +14,15 @@ export const PDFControl = () => {
   };
 
   const clickUpload = () => {
-    //funcion de subir archivos
+    console.log("clickUpload");
+  };
+
+  const clickViewPDF = () => {
+    console.log("clickViewPDF");
+  };
+
+  const clickDeletePDF = () => {
+    console.log("clickDeletePDF");
   };
 
   return (
@@ -30,13 +38,21 @@ export const PDFControl = () => {
             </svg>
             <input placeholder="Search" type="search" className="input" />
           </div>
-          <div>
-            <button className="PDFControl__Upload" onClick={clickUpload}>
-              <FaCloudUploadAlt />
+          <div className="PDFControl__principalBTn">
+            <button
+              className="PDFControl__Upload PDFControl__Btn"
+              onClick={clickUpload}
+              title="Upload"
+            >
+              <FaCloudUploadAlt size={23} />
             </button>
 
-            <button className="PDFControl__Exit" onClick={clickExit}>
-              <GiExitDoor size={25} onClick={clickExit} />
+            <button
+              className="PDFControl__Exit PDFControl__Btn"
+              onClick={clickExit}
+              title="Exit"
+            >
+              <GiExitDoor size={23} />
             </button>
           </div>
         </div>
@@ -47,8 +63,20 @@ export const PDFControl = () => {
             <p>Starling.pdf</p>
           </div>
           <div className="PDFControl__card__buttons">
-            <FaRegEye size={20} color="#1f618d" className="PDFControl__Btn" />
-            <LuDelete size={20} color="#c0392b" className="PDFControl__Btn" />
+            <FaRegEye
+              size={20}
+              color="#1f618d"
+              className="PDFControl__Btn"
+              onClick={clickViewPDF}
+              title="View"
+            />
+            <LuDelete
+              title="Delete"
+              size={20}
+              color="#c0392b"
+              className="PDFControl__Btn"
+              onClick={clickDeletePDF}
+            />
           </div>
         </div>
       </div>
