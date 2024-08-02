@@ -2,20 +2,53 @@ import { useState } from "react";
 import "./Login.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 export const Login = () => {
   const [Password, SetPassword] = useState("");
   const [User, SetUser] = useState("");
   const navigate = useNavigate();
 
-  const eventSubmit = (e) => {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    },
+  });
+
+  const eventSubmit = async (e) => {
     e.preventDefault();
-    //Funcion axios
-
-    //bstatus 1
-    navigate("/PDFControl");
-
-    //bstatus 2 contrase;a y usuario incorrectos
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/insertar_usuario",
+        {
+          usuario: User,
+          password: Password,
+        }
+      );
+      console.log(response.data[0].B_Status);
+      if (response.data[0].B_Status == 1) {
+        Toast.fire({
+          icon: "success",
+          title: "session iniciada",
+        });
+        navigate("/PDFControl");
+      } else {
+        Toast.fire({
+          icon: "error",
+          title: "usuario o contraseña incorrectos",
+        });
+      }
+      SetUser("");
+      SetPassword("");
+    } catch (error) {
+      console.error("Error al insertar usuario:", error);
+    }
   };
 
   return (
@@ -39,7 +72,8 @@ export const Login = () => {
             <input
               type="text"
               className="input"
-              placeholder="Enter your Email"
+              placeholder="Username"
+              onChange={(e) => SetUser(e.target.value)}
             />
           </div>
 
@@ -59,7 +93,8 @@ export const Login = () => {
             <input
               type="password"
               className="input"
-              placeholder="Enter your Password"
+              placeholder="Password"
+              onChange={(e) => SetPassword(e.target.value)}
             />
           </div>
           <button className="button-submit">Sign In</button>

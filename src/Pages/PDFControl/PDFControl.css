@@ -118,3 +118,12 @@ input:hover {
   background-color: #283747;
   color: white;
 }
+
+.pdfs {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
